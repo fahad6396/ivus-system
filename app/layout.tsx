@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PPMAlert from "@/components/PPMAlert";
+import LogoutButton from "@/components/LogoutButton";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -76,7 +77,8 @@ export default function RootLayout({
                   >
                     + Add Device
                   </Link>
-                </nav>
+                  <LogoutButton />
+</nav>
 
               </div>
             </div>
@@ -102,3 +104,4 @@ export default function RootLayout({
     </html>
   );
 }
+
