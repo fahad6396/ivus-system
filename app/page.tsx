@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   Bar,
@@ -19,12 +20,18 @@ import {
 import { supabase } from "@/lib/supabase";
 
 export default function DashboardPage() {
+  const router = useRouter();
   const [devices, setDevices] = useState<any[]>([]);
   const [maintenance, setMaintenance] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadDashboard() {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        router.replace("/login");
+        return;
+      }
       const { data: devicesData, error: devicesError } =
         await supabase
           .from("devices")
@@ -51,7 +58,7 @@ export default function DashboardPage() {
     }
 
     loadDashboard();
-  }, []);
+  }, [router]);
 
   const totalDevices = devices.length;
 
