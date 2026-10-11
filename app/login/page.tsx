@@ -26,7 +26,7 @@ export default function LoginPage() {
     setLoading(false);
 
     if (error) {
-      setErrorMessage("Email or password is incorrect.");
+      setErrorMessage(`${error.message} (${error.code ?? "no-code"})`);
       return;
     }
 

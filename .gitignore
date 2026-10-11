@@ -39,3 +39,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel
+
+# local backups
+*.before-*
+*-backup
+*.backup
+*.corrupted-archive
+*.zip
+.vscode/
+structure.txt
+ppm-page-backup.tsx
+.env
+.env.*
+supabase/.temp/
